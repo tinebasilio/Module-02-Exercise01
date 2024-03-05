@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Module2_Exercise01.NoBindingContext"
+             Title="Without Binding Context">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Image element -->
+            <Image Source="https://i.pinimg.com/564x/f8/20/fd/f820fd0f4671fbc18c01e2345ba4552b.jpg"
+                   Scale="3"
+                   Aspect="AspectFit"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Rotation="{Binding Source={x:Reference mySlider}, Path=Value}"/>
+
+            <!-- Slider element -->
+            <Slider x:Name="mySlider"
+                    Minimum="0"
+                    Maximum="360"
+                    Value="0"
+                    MinimumTrackColor="Gray"
+                    ThumbColor="Coral"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"/>
+            
+            <!-- Label element -->
+            <Label Text="{Binding Source={x:Reference mySlider}, Path=Value, StringFormat='Slider Value: {0:F0}'}"
+                   FontSize="Large"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

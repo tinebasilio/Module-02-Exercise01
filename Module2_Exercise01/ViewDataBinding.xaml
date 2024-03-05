@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Module2_Exercise01.ViewDataBinding"
+             Title="View to View Data Binding">
+    <ContentPage.Content>
+        <StackLayout Padding="10, 0">
+            
+            <!-- Data Binding using BindingContext -->
+            <Label x:Name="myLabel"
+                   Text="Data Binding"
+                   HorizontalTextAlignment="Center"
+                   FontSize="32"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"
+                   BindingContext="{x:Reference Name=mySlider}"
+                   Rotation="{Binding Path=Value}" />
+            
+            <Slider x:Name="mySlider"
+                    Maximum="360"
+                    MaximumTrackColor="Black"
+                    MinimumTrackColor="LightCoral"
+                    VerticalOptions="CenterAndExpand"/>
+
+            <Label Text="{Binding Text, StringFormat='Value: {0}'}"
+                   BindingContext="{x:Reference myEntry}"
+                   FontSize="16" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+            <Entry x:Name="myEntry" Placeholder="Type here..." />
+
+            <!-- Data Binding using Binding Markup with OneWay mode -->
+            <Label Text="{Binding Text}" 
+                   FontSize="16" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+            <Entry x:Name="myOtherEntry" Placeholder="Type again here..."
+                   Text="{Binding Text, Source={x:Reference myOtherEntry}, Mode=OneWay}" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
